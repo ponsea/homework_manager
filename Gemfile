@@ -50,3 +50,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 追加
 gem 'mysql2'
 gem 'dotenv-rails'
+gem 'bootstrap-sass'
