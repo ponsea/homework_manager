@@ -1,0 +1,14 @@
+#top_index_bgimage {
+  background: image-url(top_index_bgimage) no-repeat center;
+  vertical-align: middle;
+  padding: 100px 0px;
+}
+#top_index_header {
+  h1 {
+    font-size: 60px;
+    font-family: 'Nunito', sans-serif;
+  }
+  .col-sm-4 {
+    padding: 30px 10px;
+  }
+}

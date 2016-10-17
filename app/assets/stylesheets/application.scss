@@ -1,21 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 $main-color: #288c66;
 $base-color: #f9fff9;
 $accent-color: #6b3f31;
+$logo-font: 'Nunito', sans-serif;
 
-body {
-  font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
-  background-color: $base-color;
-}
-
-.navbar-default {
-  background-color: $main-color;
-  .navbar-brand {
-    color: $base-color;
-    &:hover {
-      color: $base-color;
-    }
-  }
-}
+@import "common"; // 全体レイアウトのスタイル
+@import "partials/*"; // 各ページのスタイル

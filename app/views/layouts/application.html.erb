@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title><%= @title + " - " if @title %>HomeworkManager</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav id="common_nav" class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <%= link_to 'Homework Manager', '', {class: 'navbar-brand'} %>
@@ -16,7 +15,11 @@
       </div>
     </nav>
     <%= yield %>
-    <footer class="container">&copy; 2016 Homework Management Systems</footer>
+    <footer id="common_footer">
+      <div class="container">
+        <small class="text-muted">&copy; 2016 Homework Management Systems</small>
+      </div>
+    </footer>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

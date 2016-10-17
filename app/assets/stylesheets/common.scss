@@ -1,0 +1,31 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
+  background-color: $base-color;
+  margin-bottom: 60px;
+}
+
+#common_nav {
+  background-color: $main-color;
+  margin-bottom: 0;
+  border-width: 0;
+  .navbar-brand {
+    color: $base-color;
+    font-family: $logo-font;
+    &:hover {
+      color: $base-color;
+    }
+  }
+}
+
+#common_footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+<div id="top_index_bgimage">
+  <header id="top_index_header" class="container">
+    <div class="row">
+      <h1 class="col-sm-8">Homework<br />Manager</h1>
+      <div class="col-sm-4">
+        <%= form_tag action: :auth do %>
+          <div class="form-group">
+            <%= label_tag :email, 'Email', class: 'control-label sr-only' %>
+            <%= email_field_tag :email, '', placeholder: 'Email address', class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= label_tag :password, 'Password', class: 'control_label sr-only' %>
+            <%= password_field_tag :password, '', placeholder: 'Password', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'ログイン', class: 'btn btn-primary btn-block' %>
+          </div>
+        <% end %>
+        <hr />
+        <%= link_to '新規登録', new_users_path, {class: 'btn btn-success btn-block'} %>
+      </div>
+    </div>
+  </header>
+</div>
