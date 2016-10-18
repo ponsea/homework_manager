@@ -1,4 +1,6 @@
 class TopController < ApplicationController
+  before_action :check_logined
+
   def auth
     # 認証処理。成功した場合は当該Userオブジェクト。失敗した場合はnil
     user = User.authenticate(params[:email], params[:password])
@@ -23,5 +25,13 @@ class TopController < ApplicationController
 
   def login
     @title = "ログイン"
+  end
+
+  private
+  # ユーザが既にログイン状態ならusers#showにリダイレクトするフィルタ
+  def check_logined
+    if logined_user
+      redirect_to controller: :users, action: :show
+    end
   end
 end
