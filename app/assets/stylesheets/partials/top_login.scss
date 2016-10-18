@@ -1,0 +1,15 @@
+#top_login_articles {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    font-family: $logo-font;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  #top_login_form {
+    margin-bottom: 30px;
+  }
+}

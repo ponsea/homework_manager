@@ -1,0 +1,26 @@
+<section id="top_login_articles" class="container">
+  <h2>Homework<br />Manager</h2>
+  <article id="top_login_form">
+    <%= form_tag '/top/auth' do %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <div class="form-group">
+        <%= label_tag :email, 'Email address', class: 'control-label'%>
+        <%= email_field_tag :email, '', class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password, 'Password', class: 'control-label' %>
+        <%= password_field_tag :password, '', class: 'form-control' %>
+      </div>
+      <%= hidden_field_tag :referer, flash[:referer] %>
+      <div class="form-group">
+        <%= submit_tag 'ログイン', class: 'btn btn-primary btn-block' %>
+      </div>
+    <% end %>
+  </article>
+  <article id="top_login_new">
+    <p>アカウントをお持ちでないですか？新規登録は
+    <%= link_to 'こちら', new_users_path %></p>
+  </article>
+</section>
