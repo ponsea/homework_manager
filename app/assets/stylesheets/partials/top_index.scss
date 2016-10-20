@@ -1,14 +1,26 @@
 #top_index_bgimage {
   background: image-url(top_index_bgimage) no-repeat center;
-  vertical-align: middle;
-  padding: 100px 0px;
+  @media screen and (min-width: $screen-lg-min) {
+    height: 36vw;
+    padding: 9vw 0;
+  }
 }
 #top_index_header {
-  h1 {
-    font-size: 60px;
-    font-family: $logo-font;
+  #top_index_heading {
+    @media screen and (max-width: $screen-xs-max) {
+      text-align: center;
+    }
+    h1 {
+      font-family: $logo-font;
+    }
+    p {
+      @media screen and (max-width: $screen-xs-max) {
+        font-size: 16px;
+      }
+    }
   }
-  .col-sm-4 {
-    padding: 30px 10px;
+  #top_index_form {
+    margin-top: 20px;
+    padding: 10px;
   }
 }
