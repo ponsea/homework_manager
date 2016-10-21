@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :check_logined, except: :new
 
+  def show
+    @title = "ホーム"
+  end
+
   private
   # ユーザがログイン状態でない場合はログイン画面にリダイレクトするフィルタ
   # ログイン状態の場合は@userに当該Userオブジェクトをセットする

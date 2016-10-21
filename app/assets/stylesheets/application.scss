@@ -2,10 +2,10 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-$main-color: #288c66;
-$base-color: #f9fff9;
-$accent-color: #6b3f31;
-$logo-font: 'Nunito', sans-serif;
+$main-color: #288c66;     // フォレストグリーン
+$base-color: #f9fff9;     // かなり薄い緑（ほぼ白）
+$accent-color: #7b5544;   // コーヒー色
+$logo-font: 'Nunito', sans-serif; // ロゴなどのフォント
 
 @import "common"; // 全体レイアウトのスタイル
 @import "partials/*"; // 各ページのスタイル
