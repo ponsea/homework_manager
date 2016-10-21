@@ -12,7 +12,7 @@ two:
   username: hoge
 
 three:
-  email: fuga@email.com
+  email: fuga@example.com
   password: fe8b80a1731becf7c4a139dc5fd808e5e7d65e97117e627add1375e296569752
   salt: fbf76ec6ed8e508c
   username: fuga
