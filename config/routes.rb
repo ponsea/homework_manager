@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: 'top#index'
   get '/top/login', to: 'top#login'
   post '/top/auth', to: 'top#auth'
-  resource :users
+  resource :user
 end

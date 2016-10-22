@@ -24,12 +24,12 @@
                 <strong><%= @user.username %></strong>さん
               </li>
               <li>
-                <%= link_to controller: :users, action: :show do %>
+                <%= link_to user_path do %>
                   <%= glyphicon('home') %> ユーザホーム
                 <% end %>
               </li>
               <li>
-                <%= link_to controller: :users, action: :edit do %>
+                <%= link_to edit_user_path do %>
                   <%= glyphicon('cog') %> アカウント設定
                 <% end %>
               </li>
@@ -53,7 +53,7 @@
           <div class="collapse navbar-collapse" id="common_nav_target">
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to 'ログイン', top_login_path, class: 'text-center' %></li>
-              <li><%= link_to '新規登録', new_users_path, class: 'text-center' %></li>
+              <li><%= link_to '新規登録', new_user_path, class: 'text-center' %></li>
             </ul>
           </div>
         <% end %>
