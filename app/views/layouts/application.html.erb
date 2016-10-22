@@ -4,6 +4,7 @@
     <title><%= "#{@title} - " if @title %>HomeworkManager</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <nav id="common_nav" class="navbar navbar-default">
@@ -23,6 +24,5 @@
         <small class="text-muted">&copy; 2016 Homework Management Systems</small>
       </div>
     </footer>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
