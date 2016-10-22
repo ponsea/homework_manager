@@ -1,5 +1,5 @@
 class TopController < ApplicationController
-  before_action :check_logined
+  before_action :check_not_logined
 
   def auth
     # 認証処理。成功した場合は当該Userオブジェクト。失敗した場合はnil
@@ -25,13 +25,5 @@ class TopController < ApplicationController
 
   def login
     @title = "ログイン"
-  end
-
-  private
-  # ユーザが既にログイン状態ならusers#showにリダイレクトするフィルタ
-  def check_logined
-    if logined_user
-      redirect_to controller: :users, action: :show
-    end
   end
 end

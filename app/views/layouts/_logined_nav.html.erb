@@ -23,8 +23,7 @@
         <% end %>
       </li>
       <li>
-        <%# TODO: ログアウトへのパス %>
-        <%= link_to '' do %>
+        <%= link_to logout_user_path, method: :patch do %>
           <%= glyphicon('log-out') %> ログアウト
         <% end %>
       </li>

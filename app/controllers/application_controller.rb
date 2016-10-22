@@ -14,4 +14,11 @@ class ApplicationController < ActionController::Base
     end
     return nil
   end
+
+  # ユーザが既にログイン状態ならusers#showにリダイレクトするフィルタ
+  def check_not_logined
+    if logined_user
+      redirect_to controller: :users, action: :show
+    end
+  end
 end

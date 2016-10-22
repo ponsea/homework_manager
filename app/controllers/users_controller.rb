@@ -1,8 +1,22 @@
 class UsersController < ApplicationController
   before_action :check_logined, except: :new
+  before_action :check_not_logined, only: :new
 
   def show
     @title = "ホーム"
+  end
+
+  def edit
+    @title = "ユーザ設定"
+  end
+
+  def new
+    @title = "新規登録"
+  end
+
+  def logout
+    reset_session
+    redirect_to root_path
   end
 
   private
