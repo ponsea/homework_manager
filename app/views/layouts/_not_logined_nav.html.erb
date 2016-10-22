@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="navbar-header">
+    <%= link_to 'Homework Manager', root_path, id: 'common_nav_brand', class: 'navbar-brand' %>
+    <button id="common_nav_toggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#common_nav_target">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" id="common_nav_target">
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'ログイン', top_login_path, class: 'text-center' %></li>
+      <li><%= link_to '新規登録', new_user_path, class: 'text-center' %></li>
+    </ul>
+  </div>
+</div>

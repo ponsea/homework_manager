@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="navbar-header" style='float: left'>
+    <%= link_to 'Homework Manager', root_path, id: 'common_nav_brand', class: 'navbar-brand' %>
+  </div>
+  <div id="common_nav_user" class="btn-group pull-right">
+    <button class="btn btn-primary dropdown-toggle navbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= glyphicon('user') %>
+      <span class="hidden-xs"><strong><%= user.username %></strong>さん</span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header visible-xs">
+        <strong><%= user.username %></strong>さん
+      </li>
+      <li>
+        <%= link_to user_path do %>
+          <%= glyphicon('home') %> ユーザホーム
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_user_path do %>
+          <%= glyphicon('cog') %> アカウント設定
+        <% end %>
+      </li>
+      <li>
+        <%# TODO: ログアウトへのパス %>
+        <%= link_to '' do %>
+          <%= glyphicon('log-out') %> ログアウト
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
