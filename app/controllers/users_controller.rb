@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def new
     @title = "新規登録"
+    @new_user = User.new
   end
 
   def logout
