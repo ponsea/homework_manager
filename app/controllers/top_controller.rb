@@ -23,8 +23,4 @@ class TopController < ApplicationController
       redirect_to top_login_path, alert: "メールアドレスまたはパスワードが間違っています"
     end
   end
-
-  def login
-    @title = "ログイン"
-  end
 end

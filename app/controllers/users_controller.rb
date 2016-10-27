@@ -2,16 +2,7 @@ class UsersController < ApplicationController
   before_action :check_logined, except: [:new, :create]
   before_action :check_not_logined, only: [:new, :create]
 
-  def show
-    @title = "ホーム"
-  end
-
-  def edit
-    @title = "ユーザ設定"
-  end
-
   def new
-    @title = "新規登録"
     @new_user = User.new
   end
 
