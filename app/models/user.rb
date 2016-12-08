@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   before_save :hash_password, if: Proc.new { |u| !u.validate_password.blank? }
 
-  validates :username,
+  validates :name,
     presence: { message: '必須です' },
     length: { maximum: 30, allow_blank: true,
       message: 'ユーザーネームは30文字以内です' }
@@ -39,14 +39,20 @@ class User < ApplicationRecord
     SecureRandom.hex(8)
   end
 
+  # 文字列のハッシュ値を得る。
+  # このクラスにかかわるハッシュ値の計算はこのメソッドに統一する
+  def self.digest(str)
+    Digest::SHA256.hexdigest(str)
+  end
+
   # パスワードを受け取り自身のソルトと合わせたうえでのハッシュ値を返す
   def digest_of(password)
-    Digest::SHA256.hexdigest(password + self.salt)
+    User.digest(password + self.salt)
   end
 
   private
 
-  # saveメソッドの前にvalidate_passwordに設定されたpasswordを、
+  # saveメソッドの前にvalidate_passwordに設定されたパスワードを、
   # ソルト付きハッシュに変換してpasswordに設定する。同時にsaltも登録する
   def hash_password
     self.salt = User.generate_salt

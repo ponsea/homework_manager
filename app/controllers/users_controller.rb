@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       :email,
       :validate_password,
       :validate_password_confirmation,
-      :username
+      :name
     )
   end
 end

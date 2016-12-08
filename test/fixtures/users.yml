@@ -1,18 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
   email: vagrant@example.com
-  password: 4bd2ade29f4a78dc3edbf8276786b98511741c81494b7edefad48d8bcafbb1f8
-  salt: 2a6eaa63f2cf17aa
-  username: vagrant
+  <% salt = User.generate_salt %>
+  password: <%= User.digest("vagrant" + salt) %>
+  salt: <%= salt %>
+  name: vagrant
 
 two:
   email: hoge@example.com
-  password: 7a5fa5853f673352622a559fe71aac9bb665f194411f5420bab80e941696fb8a
-  salt: 9bf923a13aad1cea
-  username: hoge
+  <% salt = User.generate_salt %>
+  password: <%= User.digest("hoge" + salt) %>
+  salt: <%= salt %>
+  name: hoge
 
 three:
   email: fuga@example.com
-  password: fe8b80a1731becf7c4a139dc5fd808e5e7d65e97117e627add1375e296569752
-  salt: fbf76ec6ed8e508c
-  username: fuga
+  <% salt = User.generate_salt %>
+  password: <%= User.digest("fuga" + salt) %>
+  salt: <%= salt %>
+  name: fuga

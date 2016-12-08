@@ -2,11 +2,11 @@
 <section id="users_new" class="container">
   <h1>新規登録</h1>
   <%= form_for @new_user, url: user_path, html: {class: 'form-horizontal'} do |f| %>
-    <div class="form-group<%= " has-error" if @new_user.errors[:username].any? %>">
-      <%= f.label :username, 'ユーザー名', class: 'control-label col-sm-3' %>
+    <div class="form-group<%= " has-error" if @new_user.errors[:name].any? %>">
+      <%= f.label :name, 'ユーザー名', class: 'control-label col-sm-3' %>
       <div class="col-sm-7">
-        <%= f.text_field :username, size: 30, class: 'form-control' %>
-        <%= bs_put_form_errors(@new_user.errors[:username]) %>
+        <%= f.text_field :name, size: 30, class: 'form-control' %>
+        <%= bs_put_form_errors(@new_user.errors[:name]) %>
       </div>
     </div>
     <div class="form-group<%= " has-error" if @new_user.errors[:email].any? %>">
