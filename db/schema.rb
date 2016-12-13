@@ -10,14 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011114407) do
+ActiveRecord::Schema.define(version: 20161213102346) do
+
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       limit: 40,                    null: false
+    t.text     "detail",     limit: 65535
+    t.boolean  "private",                  default: false, null: false
+    t.string   "password",   limit: 40
+    t.integer  "author_id",                                null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["author_id"], name: "index_groups_on_author_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email",               null: false
-    t.string "password", limit: 40, null: false
+    t.string "password", limit: 64, null: false
     t.string "salt",     limit: 16, null: false
     t.string "name",     limit: 30, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "groups", "users", column: "author_id"
 end

@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-one:
+vagrant:
   email: vagrant@example.com
   <% salt = User.generate_salt %>
   password: <%= User.digest("vagrant" + salt) %>
   salt: <%= salt %>
   name: vagrant
 
-two:
+hoge:
   email: hoge@example.com
   <% salt = User.generate_salt %>
   password: <%= User.digest("hoge" + salt) %>
   salt: <%= salt %>
   name: hoge
 
-three:
+fuga:
   email: fuga@example.com
   <% salt = User.generate_salt %>
   password: <%= User.digest("fuga" + salt) %>

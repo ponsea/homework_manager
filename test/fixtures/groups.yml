@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+vagrant_group:
+  name: vagrant_group
+  detail: vagrantのグループです。
+  private: true
+  password: 12345678
+  author: vagrant
