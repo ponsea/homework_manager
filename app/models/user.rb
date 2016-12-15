@@ -1,10 +1,16 @@
 class User < ApplicationRecord
+  has_and_belongs_to_many :joined_groups, join_table: :users_groups, class_name: 'Group'
+  has_many :created_groups, class_name: 'Group', foreign_key: 'author_id'
+
   # 新規登録の時などにバリデーションを行うためのパスワードのフィールド
   # （実際のDBと関連付いたフィールド「password」はハッシュ値なので。）
   attr_accessor :validate_password
 
+  # 登録前にvalidate_passwordからpassword(ハッシュ済)とsaltを設定する
+  # コールバック（hash_password）の登録
   before_save :hash_password, if: Proc.new { |u| !u.validate_password.blank? }
 
+  # *** バリデーション ***
   validates :name,
     presence: { message: '必須です' },
     length: { maximum: 30, allow_blank: true,
@@ -51,9 +57,9 @@ class User < ApplicationRecord
   end
 
   private
-
-  # saveメソッドの前にvalidate_passwordに設定されたパスワードを、
-  # ソルト付きハッシュに変換してpasswordに設定する。同時にsaltも登録する
+  # validate_passwordに設定されたパスワードをソルト付きハッシュに
+  # 変換してpasswordに設定する。同時にsaltも登録する
+  # このメソッドはusersテーブルへの登録前に呼び出される。
   def hash_password
     self.salt = User.generate_salt
     self.password = self.digest_of(self.validate_password)
