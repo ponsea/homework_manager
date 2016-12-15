@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   post 'top/auth' => 'top#auth'
   resource :user do
     patch 'logout' => 'users#logout'
-    resources :group
+    resources :groups
   end
 end
