@@ -14,3 +14,23 @@ two:
   user: hoge
   group: vagrant_group
   admin: false
+
+three:
+  user: fuga
+  group: fuga_group
+  admin: true
+
+four:
+  user: vagrant
+  group: fuga_group
+  admin: false
+
+five:
+  user: vagrant
+  group: sample1_group
+  admin: false
+
+six:
+  user: vagrant
+  group: sample2_group
+  admin: false

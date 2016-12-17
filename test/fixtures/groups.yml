@@ -6,3 +6,24 @@ vagrant_group:
   private: true
   password: 12345678
   author: vagrant
+
+fuga_group:
+  name: fuga_group
+  detail: fugaのグループです。
+  private: true
+  password: 12345678
+  author: fuga
+
+sample1_group:
+  name: samole1_group
+  detail: hogeのグループです。うわあああああああああああああああああああああああああああ
+  private: true
+  password: 12345678
+  author: hoge
+
+sample2_group:
+  name: samole2_group
+  detail: hogeのグループです。うわあああああああああああああああああああああああああああ
+  private: true
+  password: 12345678
+  author: hoge
