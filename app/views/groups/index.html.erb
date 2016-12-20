@@ -1,0 +1,30 @@
+<% provide :title, "グループ一覧" %>
+<div id="groups_index" class="container">
+  <h1>グループ一覧</h1>
+  <div class="row">
+    <% @user.joined_groups.each do |group| %>
+    <div class="col-md-4">
+      <article>
+        <header><%= link_to group.name, user_group_path(group) %></header>
+        <p><%= group.detail %></p>
+        <footer>作成者: <%= group.author.name %></footer>
+      </article>
+    </div>
+    <% end %>
+    <div class="col-md-4">
+      <article>
+      <%= link_to search_user_groups_path, class: 'btn btn-primary btn-block' do %>
+        <span class="btn_icon"><%= glyphicon('share-alt') %></span><br />
+        他のグループに参加
+      <% end %>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article>
+      <%= link_to new_user_group_path, class: 'btn btn-success btn-block' do %>
+        <span class="btn_icon"><%= glyphicon('plus-sign') %></span><br />新しいグループを作成
+      <% end %>
+      </article>
+    </div>
+  </div>
+</div>

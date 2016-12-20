@@ -1,0 +1,46 @@
+#groups_index {
+  // それぞれのグループの要素
+  article {
+    overflow: hidden;
+    margin: 10px;
+    height: 200px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    position: relative;
+
+    // グループの名前部分
+    header {
+      white-space: nowrap;
+      font-size: 20px;
+      a { color: $base-color; }
+      margin: 0;
+      padding: 8px;
+      background-color: $main-color;
+    }
+
+    // グループの詳細部分
+    p {
+      padding: 10px;
+    }
+
+    // グループの作成者の部分
+    footer {
+      text-align: right;
+      padding: 3px;
+      background-color: $gray-lighter;
+      width: 100%;
+      white-space: nowrap;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  // グループ参加/作成のボタン
+  .btn {
+    height: 100%;
+    padding: 50px;
+    .btn_icon {
+      font-size: 60px;
+    }
+  }
+}
