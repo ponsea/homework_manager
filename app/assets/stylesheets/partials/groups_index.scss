@@ -16,6 +16,10 @@
       margin: 0;
       padding: 8px;
       background-color: $main-color;
+      .private_icon {
+        float: right;
+        color: $gray-lighter;
+      }
     }
 
     // グループの詳細部分

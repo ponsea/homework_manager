@@ -34,3 +34,8 @@ six:
   user: vagrant
   group: sample2_group
   admin: false
+
+seven:
+  user: vagrant
+  group: public_group
+  admin: true

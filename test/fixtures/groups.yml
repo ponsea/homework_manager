@@ -27,3 +27,9 @@ sample2_group:
   private: true
   password: 12345678
   author: hoge
+
+public_group:
+  name: public_group
+  detail: パスワードがないグループです。
+  private: false
+  author: vagrant
