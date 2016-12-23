@@ -11,10 +11,12 @@
     // グループの名前部分
     header {
       white-space: nowrap;
-      font-size: 20px;
-      a { color: $base-color; }
+      padding: 5px;
+      h2 {
+        a { color: $base-color; }
+        margin: 0 0 5px 0;
+      }
       margin: 0;
-      padding: 8px;
       background-color: $main-color;
       .private_icon {
         float: right;
