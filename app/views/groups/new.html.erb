@@ -1,0 +1,48 @@
+<% provide :title, "グループ作成" %>
+<section id="groups_new" class="container">
+  <div class="row">
+    <h1 class="col-sm-offset-3 col-sm-5">グループ作成</h1>
+  </div>
+  <%= form_for @new_group, url: { action: :create }, html: {class: 'form-horizontal'} do |f| %>
+    <% e = @new_group.errors %>
+    <div class="form-group<%= " has-error" if e[:name].any? %>">
+      <%= f.label :name, 'グループ名', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.text_field :name, maxlength: 40, class: 'form-control', tabindex: 1 %>
+        <%= bs_put_form_errors(e[:name]) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :detail, 'グループの説明', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.text_area :detail, maxlength: 32000, class: 'form-control', tabindex: 2 %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-5">
+        <%= f.check_box :private, tabindex: 3, checked: true %>
+        <%= f.label :private, 'パスワードを設定する' %>
+        <div class="form-text text-muted">設定しなかった場合は、誰でも参加できるグループとなります。</div>
+      </div>
+    </div>
+    <div class="form-group<%= " has-error" if e[:password].any? %>">
+      <%= f.label :password, 'パスワード', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.password_field :password, maxlength: 40, class: 'form-control', tabindex: 4 %>
+        <%= bs_put_form_errors(e[:password]) %>
+      </div>
+    </div>
+    <div class="form-group<%= " has-error" if e[:password_confirmation].any? %>">
+      <%= f.label :password_confirmation, 'パスワード(確認用)', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.password_field :password_confirmation, maxlength: 40, class: 'form-control', tabindex: 4 %>
+        <%= bs_put_form_errors(e[:password_confirmation]) %>
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-5">
+          <%= f.submit '作成する', class: "btn btn-success btn-block" %>
+        </div>
+    </div>
+  <% end %>
+</section>
