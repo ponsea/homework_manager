@@ -6,6 +6,11 @@ class GroupsController < ApplicationController
     @user = User.includes(joined_groups: :author).find(@user.id)
   end
 
+  def show
+    @group = Group.find(params[:id])
+    # TODO: 各グループ画面用の処理
+  end
+
   def new
     @new_group = Group.new
   end
