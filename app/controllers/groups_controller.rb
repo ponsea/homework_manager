@@ -1,6 +1,11 @@
 class GroupsController < ApplicationController
   before_action :check_logined
 
+  def index
+    # 参加しているグループとその作成者をあらかじめ読み込む。(n+1問題対策)
+    @user = User.includes(joined_groups: :author).find(@user.id)
+  end
+
   def new
     @new_group = Group.new
   end
