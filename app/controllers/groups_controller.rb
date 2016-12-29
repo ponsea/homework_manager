@@ -31,6 +31,25 @@ class GroupsController < ApplicationController
     end
   end
 
+  def search
+    case params[:search_type]
+    when 'id' then
+      where_args = [ { id: params[:input_text] } ]
+    when 'keyword' then
+      keyword = "%#{params[:input_text]}%"
+      # HACK: Arel API使うべき?
+      where_args = [ 'name LIKE ? OR detail LIKE ?', keyword, keyword ]
+    else # 指定されていない。又は不正な値
+      return
+    end
+
+    # 最大10件ごとにページネーションするように取得
+    @groups = Group.includes(:author).where(*where_args)
+                .page(params[:page])
+                .per(10)
+                .order(:id)
+  end
+
   private
   def groups_params
     params.require(:group).permit(
