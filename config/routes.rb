@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
   resources :groups do
     collection { get 'search' }
-    member { post 'join' }
+    member {
+      get 'reception' # グループ参加確認ページ
+      post 'join'     # グループ参加処理
+    }
   end
 end

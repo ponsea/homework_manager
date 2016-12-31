@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :check_logined
+  before_action :check_joined, only: [:show, :edit, :update, :destroy]
 
   def index
     # 参加しているグループとその作成者をあらかじめ読み込む。(n+1問題対策)
@@ -56,6 +57,15 @@ class GroupsController < ApplicationController
   end
 
   private
+  # 当該グループに参加していなかった場合は、
+  # 参加確認ページにリダイレクトするフィルタ
+  def check_joined
+    group = Group.find(params[:id])
+    unless group.members.exists?(@user.id)
+      redirect_to reception_group_path(group)
+    end
+  end
+
   def groups_params
     params.require(:group).permit(
       :name,
