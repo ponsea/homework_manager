@@ -1,7 +1,7 @@
 <% provide :title, "グループ検索" %>
 <section id="groups_search" class="container">
   <h1>グループ検索</h1>
-  <%= form_tag search_user_groups_path, method: :get do %>
+  <%= form_tag search_groups_path, method: :get do %>
     <label><%= radio_button_tag :search_type, 'keyword', checked: true %>キーワードで探す</label>
     <label><%= radio_button_tag :search_type, 'id' %>グループIDで探す</label>
     <%= text_field_tag :input_text, params[:input_text], placeholder: 'キーワードを入力' %>
