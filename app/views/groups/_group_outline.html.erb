@@ -1,9 +1,10 @@
+<% to ||= group_path(group) %>
 <article>
   <header>
     <div class="private_icon">
       <%= glyphicon(group.private ? 'lock' : 'globe') %>
     </div>
-    <h2><%= link_to group.name, group_path(group) %></h2>
+    <h2><%= link_to group.name, to %></h2>
     ID: <%= group.id %>
   </header>
   <p><%= group.detail %></p>
