@@ -2,35 +2,36 @@
 <section id="users_new" class="container">
   <h1>新規登録</h1>
   <%= form_for @new_user, url: user_path, html: {class: 'form-horizontal'} do |f| %>
-    <div class="form-group<%= " has-error" if @new_user.errors[:name].any? %>">
+    <% e = @new_user.errors.messages # バリデーションエラー %>
+    <%= bs_form_group messages: e[:name] do |msgs|%>
       <%= f.label :name, 'ユーザー名', class: 'control-label col-sm-3' %>
       <div class="col-sm-7">
         <%= f.text_field :name, size: 30, class: 'form-control' %>
-        <%= bs_put_form_errors(@new_user.errors[:name]) %>
+        <%= msgs.call %>
       </div>
-    </div>
-    <div class="form-group<%= " has-error" if @new_user.errors[:email].any? %>">
+    <% end %>
+    <%= bs_form_group messages: e[:email] do |msgs|%>
       <%= f.label :email, 'Eメールアドレス', class: 'control-label col-sm-3' %>
       <div class="col-sm-7">
         <%= f.email_field :email, class: 'form-control' %>
-        <%= bs_put_form_errors(@new_user.errors[:email]) %>
+        <%= msgs.call %>
       </div>
-    </div>
-    <div class="form-group<%= " has-error" if @new_user.errors[:validate_password].any? %>">
+    <% end %>
+    <%= bs_form_group messages: e[:validate_password] do |msgs|%>
       <%= f.label :validate_password, 'パスワード', class: 'control-label col-sm-3' %>
       <div class="col-sm-7">
         <%= f.password_field :validate_password, class: 'form-control' %>
         <small class="form-text text-muted">パスワード長は8文字以上必要です</small>
-        <%= bs_put_form_errors(@new_user.errors[:validate_password]) %>
+        <%= msgs.call %>
       </div>
-    </div>
-    <div class="form-group<%= " has-error" if @new_user.errors[:validate_password_confirmation].any? %>">
+    <% end %>
+    <%= bs_form_group messages: e[:validate_password_confirmation] do |msgs|%>
       <%= f.label :validate_password_confirmation, 'パスワード（確認用）', class: 'control-label col-sm-3' %>
       <div class="col-sm-7">
         <%= f.password_field :validate_password_confirmation, class: 'form-control' %>
-        <%= bs_put_form_errors(@new_user.errors[:validate_password_confirmation]) %>
+        <%= msgs.call %>
       </div>
-    </div>
+    <% end %>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
           <%= f.submit '登録する', class: "btn btn-success" %>
