@@ -25,10 +25,7 @@ class GroupsController < ApplicationController
     @new_group = Group.new(params)
 
     # ユーザの入力に誤りがあった場合は作成ページに戻る
-    unless @new_group.valid?
-      render :new
-      return
-    end
+    return render :new unless @new_group.valid?
 
     # 作成したグループをDBに反映する。同時に、作成者をそのグループのメンバーとする
     Group.transaction do
@@ -54,6 +51,22 @@ class GroupsController < ApplicationController
                 .page(params[:page])
                 .per(10)
                 .order(:id)
+  end
+
+  def reception
+    @group = Group.find(params[:id])
+    # 当該グループに、既に参加していた場合はshowにリダイレクト
+    redirect_to group_path(@group) if @group.members.exists?(@user)
+  end
+
+  def join
+    @group = Group.find(params[:id])
+    if @group.password == params[:password]
+      UsersGroup.create!(user: @user, group: @group, admin: false)
+    else
+      @alert = 'パスワードが間違っています。'
+      render :reception
+    end
   end
 
   private

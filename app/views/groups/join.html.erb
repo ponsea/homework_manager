@@ -1,0 +1,5 @@
+<% provide :title, "参加完了" %>
+<section id="groups_join" class="container">
+  <h1><%= @group.name %>に参加しました。</h1>
+  <%= link_to "#{@group.name}のページへ", group_path(@group) %>
+</section>
