@@ -14,12 +14,12 @@
 #   # Do something
 #
 @onPageLoad = (controller_and_actions, callback) ->
-  $(document).on 'turbolinks:load', ->
-    conditions = regularize(controller_and_actions)
-    unless conditions
-      console.error '[onPageLoad] Unexpected arguments!'
-      return
+  conditions = regularize(controller_and_actions)
+  unless conditions
+    console.error '[onPageLoad] Unexpected arguments!'
+    return
 
+  $(document).on 'turbolinks:load', ->
     conditions.forEach (a_controller_and_action) ->
       [controller, action] = a_controller_and_action.split('#')
       callback() if isOnPage(controller, action)
