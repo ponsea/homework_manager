@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214013230) do
+ActiveRecord::Schema.define(version: 20170113042346) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       limit: 40,                    null: false
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 20161214013230) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.index ["author_id"], name: "index_groups_on_author_id", using: :btree
+  end
+
+  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",      limit: 120,               null: false
+    t.text     "detail",     limit: 65535
+    t.datetime "deadline"
+    t.integer  "points",     limit: 2
+    t.integer  "importance", limit: 1,     default: 3, null: false
+    t.integer  "author_id",                            null: false
+    t.integer  "group_id",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["author_id"], name: "index_tasks_on_author_id", using: :btree
+    t.index ["group_id"], name: "index_tasks_on_group_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -41,6 +55,8 @@ ActiveRecord::Schema.define(version: 20161214013230) do
   end
 
   add_foreign_key "groups", "users", column: "author_id"
+  add_foreign_key "tasks", "groups"
+  add_foreign_key "tasks", "users", column: "author_id"
   add_foreign_key "users_groups", "groups"
   add_foreign_key "users_groups", "users"
 end

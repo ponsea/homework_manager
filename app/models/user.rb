@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_and_belongs_to_many :joined_groups, join_table: :users_groups, class_name: 'Group'
   has_many :created_groups, class_name: 'Group', foreign_key: 'author_id'
+  has_many :created_tasks, class_name: 'Task', foreign_key: 'author_id'
 
   # 新規登録の時などにバリデーションを行うためのパスワードのフィールド
   # （実際のDBと関連付いたフィールド「password」はハッシュ値なので。）
