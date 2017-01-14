@@ -5,37 +5,34 @@
 # below each fixture, per the syntax in the comments below
 #
 
-one:
+v:
   user: vagrant
   group: vagrant_group
   admin: true
 
-two:
+v2:
+  user: vagrant
+  group: group0
+  admin: false
+
+h:
+  user: hoge
+  group: hoge_group
+  admin: true
+
+h2:
   user: hoge
   group: vagrant_group
   admin: false
 
-three:
+f:
   user: fuga
   group: fuga_group
   admin: true
 
-four:
-  user: vagrant
-  group: fuga_group
+<% 10.times do |i| %>
+_<%= i %>:
+  user: user<%= i %>
+  group: vagrant_group
   admin: false
-
-five:
-  user: vagrant
-  group: sample1_group
-  admin: false
-
-six:
-  user: vagrant
-  group: sample2_group
-  admin: false
-
-seven:
-  user: vagrant
-  group: public_group
-  admin: true
+<% end %>

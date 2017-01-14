@@ -7,6 +7,14 @@ vagrant_group:
   password: 12345678
   author: vagrant
 
+hoge_group:
+  name: hoge_group
+  detail: hogeのグループです。
+  private: true
+  password: 12345678
+  author: hoge
+
+
 fuga_group:
   name: fuga_group
   detail: fugaのグループです。
@@ -14,22 +22,18 @@ fuga_group:
   password: 12345678
   author: fuga
 
-sample1_group:
-  name: samole1_group
-  detail: hogeのグループです。うわあああああああああああああああああああああああああああ
-  private: true
-  password: 12345678
-  author: hoge
-
-sample2_group:
-  name: samole2_group
-  detail: hogeのグループです。うわあああああああああああああああああああああああああああ
-  private: true
-  password: 12345678
-  author: hoge
-
 public_group:
   name: public_group
   detail: パスワードがないグループです。
   private: false
   author: vagrant
+
+
+<% 10.times do |i| %>
+group<%= i %>:
+  name: group<%= i %>
+  detail: this is group<%= i %>
+  private: true
+  password: 12345678
+  author: user<%= i %>
+<% end %>

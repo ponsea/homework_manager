@@ -19,3 +19,12 @@ fuga:
   password: <%= User.digest("fuga" + salt) %>
   salt: <%= salt %>
   name: fuga
+
+<% 10.times do |i| %>
+user<%= i %>:
+  email: user<%= i %>@example.com
+  <% salt = User.generate_salt %>
+  password: <%= User.digest("12345678" + salt) %>
+  salt: <%= salt %>
+  name: user<%= i %>
+<% end %>

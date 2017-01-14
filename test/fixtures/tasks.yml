@@ -4,8 +4,25 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+java00:
+  title: java00
+  detail: javaの初めの課題
+  points: 300
+  importance: 3
+  author: vagrant
+  group: vagrant_group
+
+java_01:
+  title: java01
+  detail: javaの二個目の課題
+  points: 300
+  importance: 3
+  author: vagrant
+  group: vagrant_group
+
+java_rei00:
+  title: java_rei00
+  detail: javaの例題
+  importance: 1
+  author: vagrant
+  group: vagrant_group
