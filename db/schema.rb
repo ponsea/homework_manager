@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113042346) do
+ActiveRecord::Schema.define(version: 20170114120856) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       limit: 40,                    null: false
@@ -54,9 +54,20 @@ ActiveRecord::Schema.define(version: 20170113042346) do
     t.index ["user_id"], name: "index_users_groups_on_user_id", using: :btree
   end
 
+  create_table "users_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "task_id",     null: false
+    t.datetime "finished_at"
+    t.index ["task_id"], name: "index_users_tasks_on_task_id", using: :btree
+    t.index ["user_id", "task_id"], name: "index_users_tasks_on_user_id_and_task_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_users_tasks_on_user_id", using: :btree
+  end
+
   add_foreign_key "groups", "users", column: "author_id"
   add_foreign_key "tasks", "groups"
   add_foreign_key "tasks", "users", column: "author_id"
   add_foreign_key "users_groups", "groups"
   add_foreign_key "users_groups", "users"
+  add_foreign_key "users_tasks", "tasks"
+  add_foreign_key "users_tasks", "users"
 end
