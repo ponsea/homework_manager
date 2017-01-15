@@ -13,13 +13,13 @@
         <strong><%= user.name %></strong>さん
       </li>
       <li>
-        <%= link_to user_path do %>
-          <%= glyphicon('home') %> ユーザホーム
+        <%= link_to groups_path do %>
+          <%= glyphicon('flag') %> グループ一覧
         <% end %>
       </li>
       <li>
-        <%= link_to groups_path do %>
-          <%= glyphicon('flag') %> グループ一覧
+        <%= link_to user_path do %>
+          <%= glyphicon('home') %> ユーザ情報
         <% end %>
       </li>
       <li>

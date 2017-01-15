@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # ユーザが既にログイン状態ならusers#showにリダイレクトするフィルタ
+  # ユーザが既にログイン状態ならgroups#indexにリダイレクトするフィルタ
   def check_not_logined
     if logined_user
-      redirect_to controller: :users, action: :show
+      redirect_to controller: :groups, action: :index
     end
   end
 end

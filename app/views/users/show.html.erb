@@ -1,4 +1,8 @@
 <% provide :title, "ホーム" %>
 <section class="container">
-  <h1>users#show</h1>
+  <h1><%= @user.name %>さんの情報</h1>
+  <dl>
+    <dt>Eメールアドレス</dt>
+    <dd><%= @user.email %></dd>
+  </dl>
 </section>

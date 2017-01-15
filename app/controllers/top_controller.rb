@@ -10,8 +10,8 @@ class TopController < ApplicationController
       reset_session
       session[:user_id] = user.id
       if params[:referer].blank?
-        # リダイレクトによるログインでない場合はusers#showへ
-        redirect_to user_path
+        # リダイレクトによるログインでない場合はgroups#indexへ
+        redirect_to groups_path
       else
         # リダイレクトによるログインの場合は元の場所へ。
         redirect_to params[:referer]
