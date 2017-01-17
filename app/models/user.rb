@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :created_tasks, class_name: 'Task', foreign_key: 'author_id'
   has_many :tasks_profiles, class_name: 'UsersTask'
   has_many :tasks, through: :tasks_profiles, source: :task
+  has_many :messages
 
   # 新規登録の時などにバリデーションを行うためのパスワードのフィールド
   # （実際のDBと関連付いたフィールド「password」はハッシュ値なので。）
