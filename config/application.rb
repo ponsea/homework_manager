@@ -13,5 +13,6 @@ module HomeworkManager
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :ja
     config.time_zone = 'Asia/Tokyo'
+    config.generators {|g| g.assets false }
   end
 end
