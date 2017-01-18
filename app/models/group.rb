@@ -1,7 +1,8 @@
 class Group < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_and_belongs_to_many :members, join_table: :users_groups, class_name: 'User'
-  has_and_belongs_to_many :admins, -> { where(users_groups: {admin: true}) }, join_table: :users_groups, class_name: 'User'
+  has_many :users_groups
+  has_many :members, through: :users_groups, class_name: 'User', source: :user
+  has_many :admins, -> { where(users_groups: {admin: true}) }, through: :users_groups, class_name: 'User', source: :user
   has_many :tasks
   has_many :messages
   has_many :grades
