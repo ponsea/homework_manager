@@ -17,7 +17,7 @@
     </nav>
 
 
-    <%= yield %>
+    <%= content_for?(:group) ? yield(:group) : yield %>
 
 
     <footer id="common_footer">

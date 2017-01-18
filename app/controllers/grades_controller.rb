@@ -1,2 +1,3 @@
-class GradesController < ApplicationController
+class GradesController < OnGroupsController
+  layout 'group'
 end

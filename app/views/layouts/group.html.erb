@@ -1,0 +1,49 @@
+<% # このレイアウトを使用する場合は@group, @userがコントローラ側で設定されていなければならない
+  list_items = [
+    {
+      disp: 'タスク',
+      path: group_tasks_path(@group),
+      ctrl: 'tasks'
+    }, {
+      disp: 'メッセージボード',
+      path: group_messages_path(@group),
+      ctrl: 'messages'
+    }, {
+      disp: 'メンバー',
+      path: group_members_path(@group),
+      ctrl: 'members'
+    }, {
+      disp: 'レベル',
+      path: group_grades_path(@group),
+      ctrl: 'grades'
+    }, {
+      disp: 'グループ説明',
+      path: group_path(@group),
+      ctrl: 'groups'
+    },
+  ]
+%>
+<% content_for :group do %>
+  <div id="layouts_groups">
+    <section class="container">
+      <h1><%= @group.name %></h1>
+      <p><%= @group.author.name %></p>
+      <h2><%= @user.name %></h2>
+    </section>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <% list_items.each do |li| %>
+            <%= content_tag :li, class: li[:ctrl] == controller_name ? 'active' : nil do %>
+              <%= link_to li[:disp], li[:path], class: nil %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <%= yield %>
+
+<% end %>
+<%= render template: 'layouts/application' %>

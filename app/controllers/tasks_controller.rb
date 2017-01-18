@@ -1,2 +1,3 @@
-class TasksController < ApplicationController
+class TasksController < OnGroupsController
+  layout 'group'
 end

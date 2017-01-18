@@ -1,2 +1,3 @@
-class MembersController < ApplicationController
+class MembersController < OnGroupsController
+  layout 'group'
 end
