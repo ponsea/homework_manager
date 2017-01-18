@@ -61,6 +61,14 @@ class User < ApplicationRecord
     User.digest(password + self.salt)
   end
 
+  def points_with(group)
+    UsersGroup.total_points_of(self, group)
+  end
+
+  def grade_with(group)
+    Grade.grade_of(group, self.points_with(group))
+  end
+
   private
   # validate_passwordに設定されたパスワードをソルト付きハッシュに
   # 変換してpasswordに設定する。同時にsaltも登録する
