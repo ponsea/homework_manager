@@ -24,18 +24,24 @@
   ]
 %>
 <% content_for :group do %>
-  <div id="layouts_groups">
-    <section class="container">
-      <h1><%= @group.name %></h1>
-      <p><%= @group.author.name %></p>
-      <h2><%= @user.name %></h2>
-    </section>
+  <div id="layouts_group">
+    <div id="bg_image">
+      <section class="container">
+        <article id="group_heading">
+          <h1><%= @group.name %></h1>
+          <p>作成者:<%= @group.author.name %></p>
+        </article>
+        <article id="user_heading">
+          <h2><%= @user.name %></h2>
+        </article>
+      </section>
+    </div>
     <nav class="navbar navbar-default">
       <div class="container">
         <ul class="nav navbar-nav">
           <% list_items.each do |li| %>
             <%= content_tag :li, class: li[:ctrl] == controller_name ? 'active' : nil do %>
-              <%= link_to li[:disp], li[:path], class: nil %>
+              <%= link_to li[:disp], li[:path] %>
             <% end %>
           <% end %>
         </ul>
