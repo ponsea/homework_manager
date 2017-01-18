@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117115447) do
+ActiveRecord::Schema.define(version: 20170118003252) do
+
+  create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",             limit: 40, null: false
+    t.integer  "group_id",                    null: false
+    t.integer  "necessary_points",            null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["group_id", "necessary_points"], name: "index_grades_on_group_id_and_necessary_points", unique: true, using: :btree
+    t.index ["group_id"], name: "index_grades_on_group_id", using: :btree
+  end
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       limit: 40,                    null: false
@@ -73,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170117115447) do
     t.index ["user_id"], name: "index_users_tasks_on_user_id", using: :btree
   end
 
+  add_foreign_key "grades", "groups"
   add_foreign_key "groups", "users", column: "author_id"
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"

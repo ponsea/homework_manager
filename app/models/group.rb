@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   has_and_belongs_to_many :admins, -> { where(users_groups: {admin: true}) }, join_table: :users_groups, class_name: 'User'
   has_many :tasks
   has_many :messages
+  has_many :grades
 
   # *** バリデーション ***
   validates :name,
