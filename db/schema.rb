@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118102034) do
+ActiveRecord::Schema.define(version: 20170120131232) do
 
   create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",             limit: 40, null: false
@@ -76,9 +76,10 @@ ActiveRecord::Schema.define(version: 20170118102034) do
   end
 
   create_table "users_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "task_id",     null: false
+    t.integer  "user_id",                           null: false
+    t.integer  "task_id",                           null: false
     t.datetime "finished_at"
+    t.integer  "state",       limit: 1, default: 0, null: false
     t.index ["task_id"], name: "index_users_tasks_on_task_id", using: :btree
     t.index ["user_id", "task_id"], name: "index_users_tasks_on_user_id_and_task_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_users_tasks_on_user_id", using: :btree
