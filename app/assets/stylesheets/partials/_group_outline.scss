@@ -1,6 +1,6 @@
 @mixin group_outline {
   // それぞれのグループの要素
-  article {
+  .group_outline {
     overflow: hidden;
     margin: 10px;
     height: 200px;

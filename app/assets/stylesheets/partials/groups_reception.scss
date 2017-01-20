@@ -1,7 +1,7 @@
 #groups_reception {
   @include group-outline;
   // 当該グループのdetailフィールドの内容をすべて表示できるように上書き
-  article {
+  .group-outline: {
     height: initial;
     min-height: 200px;
   }
