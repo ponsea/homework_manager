@@ -11,4 +11,10 @@ class OnGroupsController < ApplicationController
       redirect_to reception_group_path(@group)
     end
   end
+
+  def check_admin
+    unless @group.admins.exists?(@user.id)
+      redirect_to group_path(@group)
+    end
+  end
 end
