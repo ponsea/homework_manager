@@ -13,8 +13,9 @@ Rails.application.routes.draw do
       post 'join'     # グループ参加処理
     end
     resources :tasks
-    resources :members
+    resources :members, only: :index
     resources :grades
-    resources :messages
+    resources :messages, only: [:index, :new, :create]
+    resources :users_tasks, only: [:index, :edit, :update]
   end
 end
