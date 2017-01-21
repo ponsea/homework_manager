@@ -69,6 +69,10 @@ class User < ApplicationRecord
     Grade.grade_of(group, self.points_with(group))
   end
 
+  def is_admin_with(group)
+    UsersGroup.where(group: group).where(user: self)[0].admin?
+  end
+
   private
   # validate_passwordに設定されたパスワードをソルト付きハッシュに
   # 変換してpasswordに設定する。同時にsaltも登録する

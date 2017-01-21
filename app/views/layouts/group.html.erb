@@ -2,7 +2,7 @@
   list_items = [
     {
       disp: 'タスク',
-      path: group_tasks_path(@group),
+      path: @user.is_admin_with(@group) ? group_tasks_path(@group) : group_users_tasks_path(@group),
       ctrl: 'tasks'
     }, {
       disp: 'メッセージボード',

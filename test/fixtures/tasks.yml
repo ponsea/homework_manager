@@ -4,27 +4,42 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-java00:
-  title: java00
-  detail: javaの初めの課題
-  deadline: 2017-02-01 00:00:00
-  points: 300
-  importance: 3
-  author: vagrant
-  group: vagrant_group
-
-java01:
-  title: java01
-  detail: javaの二個目の課題
-  deadline: 2017-02-01 00:00:00
-  points: 300
-  importance: 3
-  author: vagrant
-  group: vagrant_group
-
 java_rei00:
   title: java_rei00
   detail: javaの例題
   importance: 1
   author: vagrant
   group: vagrant_group
+
+<% 10.times do |i| %>
+java<%= i %>:
+  title: java<%= i %>
+  detail: javaの課題
+  deadline: 2017-02-01 00:0<%= i %>:00
+  points: <%= i %>00
+  importance: <%= i + 1 %>
+  author: vagrant
+  group: vagrant_group
+<% end %>
+
+<% 10.times do |i| %>
+ruby<%= i %>:
+  title: ruby<%= i %>
+  detail: rubyの課題
+  deadline: 2017-02-01 00:0<%= i %>:00
+  points: <%= i %>00
+  importance: <%= i + 1 %>
+  author: vagrant
+  group: vagrant_group
+<% end %>
+
+<% 10.times do |i| %>
+php<%= i %>:
+  title: php<%= i %>
+  detail: phpの課題
+  deadline: 2017-02-01 00:0<%= i %>:00
+  points: <%= i %>00
+  importance: <%= i + 1 %>
+  author: vagrant
+  group: vagrant_group
+<% end %>

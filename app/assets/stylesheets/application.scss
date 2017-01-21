@@ -7,5 +7,12 @@ $base-color: #f9fff9;     // かなり薄い緑（ほぼ白）
 $accent-color: #7b5544;   // コーヒー色
 $logo-font: 'Nunito', sans-serif; // ロゴなどのフォント
 
+// タスクの重要度別の色
+.importance_1_2 { background-color: #6bffff; }
+.importance_3_4 { background-color: #6bff6b; }
+.importance_5_6 { background-color: #ffff6b; }
+.importance_7_8 { background-color: #ffb56b; }
+.importance_9_X { background-color: #ff6b6b; }
+
 @import "common"; // 全体レイアウトのスタイル
 @import "partials/*"; // 各ページのスタイル

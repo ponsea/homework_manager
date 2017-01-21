@@ -1,0 +1,23 @@
+<article class="task_outline">
+  <a href="<%= to %>">
+    <h1 class="<%= importance_to_class_name(task.importance) %>">
+      <%= task.title %>
+    </h1>
+    <table>
+      <tr>
+        <td>期限</td><td><%= task.deadline.strftime '%Y年%m月%d日 %H:%M' %></td>
+      </tr>
+      <tr>
+        <td>重要度</td><td><%= task.importance %></td>
+      </tr>
+      <tr>
+        <td>獲得ポイント</td><td><%= task.points %>pt</td>
+      </tr>
+      <% if defined? finished_at %>
+        <tr>
+          <td>完了日時</td><td><%= finished_at.strftime '%Y年%m月%d日 %H:%M' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </a>
+</article>

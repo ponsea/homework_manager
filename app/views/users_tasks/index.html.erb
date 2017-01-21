@@ -1,0 +1,34 @@
+<section id="users_tasks_index" class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#unfinished" data-toggle="tab">未完了のタスク</a></li>
+    <li><a href="#finished" data-toggle="tab">完了</a></li>
+    <li><a href="#confirmed" data-toggle="tab">完了&amp;確認済</a></li>
+  </ul>
+  <section class="tab-content">
+    <%= form_tag group_users_tasks_path(@group), method: :get, id: :order_form do %>
+      <select name="order">
+        <option value="deadline_asc">期限が近い順</option>
+        <option value="deadline_desc">期限が遠い順</option>
+        <option value="importance_asc">重要度が低い順</option>
+        <option value="importance_desc">重要度が高い順</option>
+        <option value="points_asc">獲得ポイントが低い順</option>
+        <option value="points_desc">獲得ポイントが高い順</option>
+      </select>
+    <% end %>
+    <div id="unfinished" class="tab-pane fade in active">
+      <% @unfinished_u_tasks.each do |ut| %>
+        <%= render 'tasks/task_outline', task: ut.task, to: group_users_task_path(@group, ut) %>
+      <% end %>
+    </div>
+    <div id="finished" class="tab-pane fade">
+      <% @finished_u_tasks.each do |ut| %>
+        <%= render 'tasks/task_outline', task: ut.task, finished_at: ut.finished_at, to: group_users_task_path(@group, ut) %>
+      <% end %>
+    </div>
+    <div id="confirmed" class="tab-pane fade">
+      <% @confirmed_u_tasks.each do |ut| %>
+        <%= render 'tasks/task_outline', task: ut.task, finished_at: ut.finished_at, to: group_users_task_path(@group, ut) %>
+      <% end %>
+    </div>
+  </section>
+</section>

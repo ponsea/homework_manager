@@ -3,26 +3,40 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 
-one:
-  user: user0
-  task: java00
-
 two:
   user: user1
-  task: java00
+  task: java0
 
 three:
   user: user2
-  task: java00
-
-four:
-  user: user0
-  task: java01
+  task: java0
 
 five:
   user: user1
-  task: java01
+  task: java1
 
 six:
   user: user2
-  task: java01
+  task: java1
+
+<% 10.times do |i| %>
+_<%= i %>:
+  user: user0
+  task: java<%= i %>
+<% end %>
+
+<% 10.times do |i| %>
+f<%= i %>:
+  user: user0
+  task: ruby<%= i %>
+  state: <%= UsersTask::STATE_FINISHED %>
+  finished_at: 2017-01-02 00:00:0<%= i %>
+<% end %>
+
+<% 10.times do |i| %>
+c<%= i %>:
+  user: user0
+  task: php<%= i %>
+  state: <%= UsersTask::STATE_CONFIRMED %>
+  finished_at: 2017-01-01 00:00:0<%= i %>
+<% end %>
