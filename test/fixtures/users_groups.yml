@@ -36,3 +36,9 @@ _<%= i %>:
   group: vagrant_group
   admin: false
 <% end %>
+
+u:
+  user: hoge
+  group: group0
+  admin: false
+  

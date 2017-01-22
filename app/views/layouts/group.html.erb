@@ -1,8 +1,9 @@
 <% # このレイアウトを使用する場合は@group, @userがコントローラ側で設定されていなければならない
+  admin = @user.is_admin_with(@group)
   list_items = [
     {
       disp: 'タスク',
-      path: @user.is_admin_with(@group) ? group_tasks_path(@group) : group_users_tasks_path(@group),
+      path: admin ? group_tasks_path(@group) : group_users_tasks_path(@group),
       ctrl: 'tasks'
     }, {
       disp: 'メッセージボード',
@@ -33,6 +34,11 @@
         </article>
         <article id="user_heading">
           <h2><%= @user.name %></h2>
+          <% if admin %>
+            <p>管理者<p>
+          <% elsif grade = @user.grade_with(@group) %>
+            <p><%= "レベル: #{grade.name}" %></p>
+          <% end %>
         </article>
       </section>
     </div>

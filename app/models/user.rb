@@ -66,7 +66,10 @@ class User < ApplicationRecord
   end
 
   def grade_with(group)
-    Grade.grade_of(group, self.points_with(group))
+    Grade.where(group: group)
+      .where('necessary_points <= ?', self.points_with(group))
+        .order(:necessary_points)
+          .last
   end
 
   def is_admin_with(group)
