@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120131232) do
+ActiveRecord::Schema.define(version: 20170122073812) do
 
   create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",             limit: 40, null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170120131232) do
     t.string   "title",      limit: 120,               null: false
     t.text     "detail",     limit: 65535
     t.datetime "deadline"
-    t.integer  "points",     limit: 2
+    t.integer  "points",     limit: 2,     default: 0
     t.integer  "importance", limit: 1,     default: 3, null: false
     t.integer  "author_id",                            null: false
     t.integer  "group_id",                             null: false
