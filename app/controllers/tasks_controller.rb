@@ -12,13 +12,16 @@ class TasksController < OnGroupsController
 
   def create
     @task = Task.new(tasks_params)
-    if @task.save
-      # TODO: メール送信処理
+    return render :new unless @task.valid?
 
-      redirect_to action: :index
-    else
-      render :new
+    Task.transaction do
+      @group.members.each do |m|
+        m.tasks << @task
+      end
     end
+    # TODO: メール送信処理
+
+    redirect_to action: :index
   end
 
   private
