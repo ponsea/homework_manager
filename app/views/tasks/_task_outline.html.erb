@@ -4,11 +4,9 @@
       <%= task.title %>
     </h1>
     <table>
-      <% unless task.deadline.nil? %>
-        <tr>
-          <td>期限</td><td><%= task.deadline.strftime '%Y年%m月%d日 %H:%M' %></td>
-        </tr>
-      <% end %>
+      <tr>
+        <td>期限</td><td><%= task.deadline.nil? ? 'なし' : task.deadline.strftime('%Y年%m月%d日 %H:%M') %></td>
+      </tr>
       <tr>
         <td>重要度</td><td><%= task.importance %></td>
       </tr>
