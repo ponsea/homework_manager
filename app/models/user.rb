@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :joined_groups, through: :users_groups, class_name: 'Group', source: :group
   has_many :created_groups, class_name: 'Group', foreign_key: 'author_id'
   has_many :created_tasks, class_name: 'Task', foreign_key: 'author_id'
-  has_many :tasks_profiles, class_name: 'UsersTask'
-  has_many :tasks, through: :tasks_profiles, source: :task
+  has_many :users_tasks
+  has_many :tasks, through: :users_tasks
   has_many :messages
 
   # 新規登録の時などにバリデーションを行うためのパスワードのフィールド

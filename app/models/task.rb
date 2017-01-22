@@ -1,8 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :group
-  has_many :subjects_profiles, class_name: 'UsersTask'
-  has_many :subjects, class_name: 'User', through: :subjects_profiles, source: :user
+  has_many :users_tasks
+  has_many :users, through: :users_tasks
 
   # *** バリデーション ***
   validates :title,
