@@ -1,0 +1,53 @@
+<% provide :title, "タスク新規作成" %>
+<section id="tasks_new" class="container">
+  <div class="row">
+    <h1 class="col-sm-offset-3 col-sm-5 text-center">タスク作成</h1>
+  </div>
+  <%= form_for @task, url: { action: :create }, html: {class: 'form-horizontal'} do |f| %>
+    <% e = @task.errors %>
+    <%= bs_form_group messages: e[:title] do |msgs| %>
+      <%= f.label :title, 'タイトル', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.text_field :title, maxlength: 120, class: 'form-control', tabindex: 1 %>
+        <%= msgs.call %>
+      </div>
+    <% end %>
+    <%= bs_form_group do %>
+      <%= f.label :detail, '説明', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.text_area :detail, maxlength: 32000, class: 'form-control', tabindex: 2 %>
+      </div>
+    <% end %>
+    <%= bs_form_group do %>
+      <%= f.label :deadline, '期限', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.datetime_local_field :deadline, class: 'form-control', tabindex: 3 %>
+      </div>
+    <% end %>
+    <%= bs_form_group do %>
+      <%= f.label :importance, '重要度', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.select :importance, 1..10, selected: 3, class: 'form-control', tabindex: 4 %>
+      </div>
+    <% end %>
+    <%= bs_form_group messages: e[:points] do |msgs| %>
+      <%= f.label :points, '獲得ポイント', class: 'control-label col-sm-3' %>
+      <div class="col-sm-5">
+        <%= f.number_field :points, min: 0, max: 30000, value: 0, class: 'form-control', tabindex: 5 %>
+        <%= msgs.call %>
+      </div>
+    <% end %>
+    <%= bs_form_group do %>
+      <label class="control-label col-sm-3">通知メールを送る</label>
+      <div class="col-sm-5">
+        <%= check_box_tag :mail, class: 'form-control', tabindex: 6 %>
+        <div class="form-text text-muted">チェックした場合はメンバー全員にメールが送信されます</div>
+      </div>
+    <% end %>
+    <%= bs_form_group do %>
+      <div class="col-sm-offset-3 col-sm-5">
+        <%= f.submit '作成する', class: 'btn btn-success btn-block' %>
+      </div>
+    <% end %>
+  <% end %>
+</section>
