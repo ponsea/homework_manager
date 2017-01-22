@@ -28,3 +28,10 @@ user<%= i %>:
   salt: <%= salt %>
   name: user<%= i %>
 <% end %>
+
+tike:
+  email: puodsea@gmail.com
+  <% salt = User.generate_salt %>
+  password: <%= User.digest("12345678" + salt) %>
+  salt: <%= salt %>
+  name: tike

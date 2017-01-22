@@ -40,7 +40,7 @@
     <%= bs_form_group do %>
       <label class="control-label col-sm-3">通知メールを送る</label>
       <div class="col-sm-5">
-        <%= check_box_tag :mail, class: 'form-control', tabindex: 6 %>
+        <%= check_box_tag :mail, true, false, tabindex: 6 %>
         <div class="form-text text-muted">チェックした場合はメンバー全員にメールが送信されます</div>
       </div>
     <% end %>

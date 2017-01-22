@@ -19,7 +19,10 @@ class TasksController < OnGroupsController
         m.tasks << @task
       end
     end
-    # TODO: メール送信処理
+    if params[:mail]
+      to = @group.members.map {|m| m.email }
+      NoticeMailer.task_created(@task, to).deliver
+    end
 
     redirect_to action: :index
   end

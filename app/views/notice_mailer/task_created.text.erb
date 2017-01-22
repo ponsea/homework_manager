@@ -1,0 +1,11 @@
+<%= @greeting %>
+
+作成者:<%= @task.author.name %>
+グループ名: <%= @task.group.name %>
+タスク名: <%= @task.title %>
+期限: <%= @task.deadline.nil? ? 'なし' : @task.deadline.strftime('%Y年%m月%d日 %H:%M') %>
+重要度: <%= @task.importance %>
+獲得ポイント: <%= @task.points %>pt
+
+HomeworkManagerで確認↓
+<%= group_url(@task.group, host: 'homework-manager.puods.com') %>

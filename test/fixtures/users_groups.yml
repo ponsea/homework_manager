@@ -41,4 +41,9 @@ u:
   user: hoge
   group: group0
   admin: false
-  
+
+
+t:
+  user: tike
+  group: hoge_group
+  admin: false
