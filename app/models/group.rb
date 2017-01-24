@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   has_many :admins, -> { where(users_groups: {admin: true}) }, through: :users_groups, class_name: 'User', source: :user
   has_many :tasks
   has_many :messages
-  has_many :grades
+  has_many :grades, -> {order(necessary_points: :desc)}, dependent: :destroy
 
   # *** バリデーション ***
   validates :name,

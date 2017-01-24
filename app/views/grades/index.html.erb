@@ -1,3 +1,21 @@
-<section class="container">
-  <h1><%= controller_name %>#<%= action_name %></h1>
+<section id="grades_index" class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h1>レベル一覧</h1></div>
+    <table class="table">
+      <tr><th>名前</th><th>必要ポイント</th></tr>
+      <% your_grade = @user.grade_with(@group).id rescue nil %>
+      <% @group.grades.each do |grade| %>
+        <% is_yours = your_grade == grade.id %>
+        <%= content_tag :tr, class: is_yours ? 'bg-danger' : nil do %>
+          <td>
+            <%= grade.name %>
+            <% if is_yours %>
+              <span class="label label-danger">あなた</span>
+            <% end %>
+          </td>
+          <td><%= grade.necessary_points %></td>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
 </section>

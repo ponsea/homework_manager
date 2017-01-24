@@ -1,0 +1,42 @@
+<section id="grades_admin_index" class="container">
+  <h1>レベル一覧</h1>
+  <button id="add_grade_btn" type="button", class="btn btn-success">レベルを追加</button>
+  <button id="save_btn" type="button", class="btn btn-primary">保存</button>
+  <% if alert == 'success' %>
+    <div class="alert alert-info">
+      <button class="close" data-dismiss="alert">&times;</button>
+      保存が完了しました。
+    </div>
+  <% elsif alert == 'error'%>
+    <div class="alert alert-danger">
+      <button class="close" data-dismiss="alert">&times;</button>
+      <strong>入力値に誤りがあります。</strong>
+      <ul>
+        <li>必要ポイントは重複しないように設定してください。</li>
+        <li>名前の文字数は40文字までです</li>
+        <li>必要ポイントの範囲は0～約20億までです</li>
+    </div>
+  <% end %>
+  <%= form_tag({action: :create}, id: 'grades_form', class: 'form-inline') do %>
+    <% @group.grades.each do |grade| %>
+      <div>
+        <div class="form-group">
+          <label>名前<input class="form-control" placeholder="名前" type="text" value="<%= grade.name %>" name="grades[][name]"></label>
+        </div>
+        <div class="form-group">
+          <label>必要ポイント<input class="form-control" placeholder="必要ポイント" type="number" value="<%= grade.necessary_points %>" name="grades[][necessary_points]" min="0" max="2000000000"></label>
+        </div>
+        <button type="button" class="btn btn-danger remove_btn">削除</button>
+      </div>
+    <% end %>
+    <div id="clone">
+      <div class="form-group">
+        <label>名前<input class="form-control" placeholder="名前" type="text" name="grades[][name]"></label>
+      </div>
+      <div class="form-group">
+        <label>必要ポイント<input class="form-control" placeholder="必要ポイント" type="number" name="grades[][necessary_points]" min="0" max="2000000000"></label>
+      </div>
+      <button type="button" class="btn btn-danger remove_btn">削除</button>
+    </div>
+  <% end %>
+</section>
