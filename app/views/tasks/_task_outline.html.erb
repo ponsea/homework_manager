@@ -3,19 +3,19 @@
     <h1 class="<%= importance_to_class_name(task.importance) %>">
       <%= task.title %>
     </h1>
-    <table>
+    <table class="table">
       <tr>
-        <td>期限</td><td><%= task.deadline.nil? ? 'なし' : task.deadline.strftime('%Y年%m月%d日 %H:%M') %></td>
+        <th>期限</th><td><%= task.deadline.nil? ? 'なし' : task.deadline.strftime('%Y年%m月%d日 %H:%M') %></td>
       </tr>
       <tr>
-        <td>重要度</td><td><%= task.importance %></td>
+        <th>重要度</th><td><%= task.importance %></td>
       </tr>
       <tr>
-        <td>獲得ポイント</td><td><%= task.points %>pt</td>
+        <th>獲得ポイント</th><td><%= task.points %>pt</td>
       </tr>
       <% if defined? finished_at %>
         <tr>
-          <td>完了日時</td><td><%= finished_at.strftime '%Y年%m月%d日 %H:%M' %></td>
+          <th>完了日時</th><td><%= finished_at.strftime '%Y年%m月%d日 %H:%M' %></td>
         </tr>
       <% end %>
     </table>
