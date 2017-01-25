@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
     resources :tasks
     resources :members, only: :index
-    resources :grades
+    resources :grades, only: [:index, :create]
     resources :messages, only: [:index, :new, :create]
     resources :users_tasks, only: [:index, :show, :update]
   end
