@@ -1,0 +1,27 @@
+<% task = @users_task.task %>
+<section id="users_tasks_show" class="container">
+  <article>
+    <% case @users_task.state %>
+    <% when UsersTask::STATE_UNFINISHED %>
+      <button class="btn btn-primary" id="state" data-state="unfinished">完了にする</button>
+    <% when UsersTask::STATE_FINISHED %>
+        <button class="btn btn-warning" id="state" data-state="finished">未完了にする</button>
+    <% when UsersTask::STATE_CONFIRMED %>
+      <button id="state" data-state="confirmed" class="btn btn-default disabled">確認済み</button>
+    <% end %>
+    <h1 class="<%= importance_to_class_name(task.importance) %>">
+      <%= task.title %>
+   </h1>
+    <pre><%= task.detail %></pre>
+    <table class="table table-condensed">
+      <tr><th>作成者</th><td><%= task.author.name %></td></tr>
+      <tr><th>作成日</th><td><%= task.created_at.strftime('%Y年%m月%d日 %H:%M')%></td></tr>
+      <tr><th>期限</th><td><%= task.deadline.strftime('%Y年%m月%d日 %H:%M')%></td></tr>
+      <tr><th>重要度</th><td><%= task.importance %></td></tr>
+      <tr><th>獲得ポイント</th><td><%= task.points || 'なし' %></td></tr>
+    </table>
+  <article>
+<%= form_tag({action: :update}, method: 'patch', id: 'state_change_form') do %>
+  <%= hidden_field_tag 'state', '', id: 'hidden_state'%>
+<% end %>
+</section>

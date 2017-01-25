@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     resources :members, only: :index
     resources :grades
     resources :messages, only: [:index, :new, :create]
-    resources :users_tasks, only: [:index, :edit, :update]
+    resources :users_tasks, only: [:index, :show, :update]
   end
 end
