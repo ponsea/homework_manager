@@ -4,7 +4,7 @@
     {
       disp: 'タスク',
       path: admin ? group_tasks_path(@group) : group_users_tasks_path(@group),
-      ctrl: 'tasks'
+      ctrl: 'users_tasks'
     }, {
       disp: 'メッセージボード',
       path: group_messages_path(@group),
@@ -46,7 +46,7 @@
       <div class="container">
         <ul class="nav navbar-nav">
           <% list_items.each do |li| %>
-            <%= content_tag :li, class: li[:ctrl] == controller_name ? 'active' : nil do %>
+            <%= content_tag :li, class: li[:ctrl].include?(controller_name) ? 'active' : nil do %>
               <%= link_to li[:disp], li[:path] %>
             <% end %>
           <% end %>
