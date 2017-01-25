@@ -4,7 +4,7 @@
     {
       disp: 'タスク',
       path: admin ? group_tasks_path(@group) : group_users_tasks_path(@group),
-      ctrl: 'tasks'
+      ctrl: 'users_tasks'
     }, {
       disp: 'メッセージボード',
       path: group_messages_path(@group),
@@ -29,7 +29,8 @@
     <div id="bg_image">
       <section class="container">
         <article id="group_heading">
-          <h1><%= @group.name %></h1>
+          <p id="today"><%= Time.current.strftime('%Y年%m月%d日') %></p>
+          <h1 id="group_name"><%= @group.name %></h1>
           <p>作成者:<%= @group.author.name %></p>
         </article>
         <article id="user_heading">
@@ -46,7 +47,7 @@
       <div class="container">
         <ul class="nav navbar-nav">
           <% list_items.each do |li| %>
-            <%= content_tag :li, class: li[:ctrl] == controller_name ? 'active' : nil do %>
+            <%= content_tag :li, class: li[:ctrl].include?(controller_name) ? 'active' : nil do %>
               <%= link_to li[:disp], li[:path] %>
             <% end %>
           <% end %>

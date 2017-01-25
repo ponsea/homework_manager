@@ -1,0 +1,17 @@
+#users_tasks_show {
+  article {
+    border: 3px solid #ccc;
+    h1 {
+      margin: 0;
+      padding: 10px;
+    }
+    pre {
+      min-height: 100px;
+      margin: 0;
+    }
+  }
+  #state {
+    float: right;
+    margin: 10px;
+  }
+}
