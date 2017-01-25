@@ -3,7 +3,10 @@ class TasksController < OnGroupsController
   before_action :check_admin
 
   def index
-    @tasks = Task.where(group: @group).order(updated_at: :desc)
+    @tasks = Task.where(group: @group)
+                .page(params[:page])
+                .per(10)
+                .order(updated_at: :desc)
   end
 
   def new

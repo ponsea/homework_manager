@@ -3,4 +3,5 @@
   <% @tasks.each do |task| %>
     <%= render 'tasks/task_outline', task: task, to: group_task_path(@group, task) %>
   <% end %>
+  <%= paginate @tasks %>
 </section>
