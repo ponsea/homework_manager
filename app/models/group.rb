@@ -1,8 +1,9 @@
 class Group < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_many :users_groups
+  has_many :users_groups, -> {order(total_points: :desc)}
   has_many :members, through: :users_groups, class_name: 'User', source: :user
   has_many :admins, -> { where(users_groups: {admin: true}) }, through: :users_groups, class_name: 'User', source: :user
+  has_many :not_admins, -> { where(users_groups: {admin: false}) }, through: :users_groups, class_name: 'User', source: :user
   has_many :tasks
   has_many :messages
   has_many :grades, -> {order(necessary_points: :desc)}, dependent: :destroy

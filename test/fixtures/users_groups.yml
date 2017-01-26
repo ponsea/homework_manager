@@ -20,11 +20,6 @@ h:
   group: hoge_group
   admin: true
 
-h2:
-  user: hoge
-  group: vagrant_group
-  admin: false
-
 f:
   user: fuga
   group: fuga_group
@@ -47,3 +42,8 @@ t:
   user: tike
   group: hoge_group
   admin: false
+
+_:
+  user: hoge
+  group: vagrant_group
+  admin: true

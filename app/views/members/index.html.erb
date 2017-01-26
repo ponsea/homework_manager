@@ -1,3 +1,28 @@
 <section class="container">
-  <h1><%= controller_name %>#<%= action_name %></h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">管理者</div>
+    <table class="table">
+      <tr><td><%= @group.admins.map{|m| m.name }.join(', ') %></td></tr>
+    </table>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">メンバー</div>
+    <table class="table table-striped">
+      <tr><th>順位</th><th>名前</th><th>合計ポイント</th><th>レベル</th></tr>
+      <% @group.not_admins.each do |m| %>
+        <% points = m.points_with(@group); is_yours =  @user.id == m.id %>
+        <%= content_tag :tr, class: is_yours ? 'danger' : nil do %>
+          <th scope="row">
+            <%= @group.not_admins.count{|v| v.points_with(@group) > points } + 1 %>位
+            <% if is_yours %>
+              <span class="label label-danger">あなた</span>
+            <% end %>
+          </th>
+          <td><%= m.name %></td>
+          <td><%= points %>pt</td>
+          <td><%= m.grade_with(@group).name %></td>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
 </section>
