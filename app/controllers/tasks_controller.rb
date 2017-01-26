@@ -18,7 +18,7 @@ class TasksController < OnGroupsController
     return render :new unless @task.valid?
 
     Task.transaction do
-      @group.members.each do |m|
+      @group.not_admins.each do |m|
         m.tasks << @task
       end
     end
