@@ -23,11 +23,13 @@ class UsersTasksController < OnGroupsController
     when 'unfinished'
       users_task.state = UsersTask::STATE_UNFINISHED
       users_task.finished_at = nil
+      users_task.save!
+      redirect_to({action: :show}, notice: '未完了にしました。')
     when 'finished'
       users_task.state = UsersTask::STATE_FINISHED
       users_task.finished_at = Time.current
+      users_task.save!
+      redirect_to({action: :show}, notice: '完了にしました。')
     end
-    users_task.save!
-    redirect_to action: :show
   end
 end
