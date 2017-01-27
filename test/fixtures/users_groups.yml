@@ -30,6 +30,7 @@ _<%= i %>:
   user: user<%= i %>
   group: vagrant_group
   admin: false
+  total_points: <%= i * 100 %>
 <% end %>
 
 u:

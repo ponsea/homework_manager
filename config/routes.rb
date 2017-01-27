@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :members, only: :index
     resources :grades, only: [:index, :create]
     resources :messages, only: [:index, :new, :create]
-    resources :users_tasks, only: [:index, :show, :update]
+    resources :users_tasks, only: [:index, :show, :update] do
+      collection { patch 'confirm'}
+    end
   end
 end

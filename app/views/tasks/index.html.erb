@@ -1,7 +1,7 @@
 <section id="tasks_index" class="container">
   <%= link_to 'タスクを新規作成', new_group_task_path(@group), class: 'btn btn-success'%>
   <% @tasks.each do |task| %>
-    <%= render 'tasks/task_outline', task: task, to: group_task_path(@group, task) %>
+    <%= render 'tasks/task_outline', task: task, to: group_task_path(@group, task.id) %>
   <% end %>
   <%= paginate @tasks %>
 </section>

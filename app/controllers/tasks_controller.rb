@@ -9,6 +9,13 @@ class TasksController < OnGroupsController
                 .order(updated_at: :desc)
   end
 
+  def show
+    @task = Task.includes(:users).find(params[:id])
+    @finished_u_tasks = @task.users_tasks.select{|ut| ut.state == UsersTask::STATE_FINISHED}
+    @unfinished_u_tasks = @task.users_tasks.select{|ut| ut.state == UsersTask::STATE_UNFINISHED}
+    @confirmed_u_tasks = @task.users_tasks.select{|ut| ut.state == UsersTask::STATE_CONFIRMED}
+  end
+
   def new
     @task = Task.new
   end

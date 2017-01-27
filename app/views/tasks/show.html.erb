@@ -1,0 +1,63 @@
+<section id="tasks_show" class="container">
+  <article>
+    <h1 class="<%= importance_to_class_name(@task.importance) %>">
+      <%= @task.title %>
+   </h1>
+    <pre><%= @task.detail %></pre>
+    <table class="table table-condensed">
+      <tr><th>作成者</th><td><%= @task.author.name %></td></tr>
+      <tr><th>作成日</th><td><%= @task.created_at.strftime('%Y年%m月%d日 %H:%M')%></td></tr>
+      <tr><th>期限</th><td><%= @task.deadline.strftime('%Y年%m月%d日 %H:%M') rescue 'なし'%></td></tr>
+      <tr><th>重要度</th><td><%= @task.importance %></td></tr>
+      <tr><th>獲得ポイント</th><td><%= @task.points || 'なし' %></td></tr>
+    </table>
+  </article>
+  <%= form_tag({ controller: :users_tasks, action: :confirm }, method: :patch) do %>
+  <%= hidden_field_tag :task, @task.id %>
+    <div class="panel panel-default">
+      <%= submit_tag '確認済みにする', class: 'btn btn-success', disabled: @finished_u_tasks.empty? %>
+      <div class="panel-heading">完了済みのメンバー</div>
+      <table class="table">
+        <tr><th>確認</th><th>名前</th><th>完了日時</th></tr>
+        <% if @finished_u_tasks.empty? %>
+          <tr><td>完了しているメンバーはいません</td></tr>
+        <% end %>
+        <% @finished_u_tasks.each do |ut| %>
+          <tr>
+            <td><%= check_box_tag 'users_tasks[]', ut.id, true %></td>
+            <td><%= ut.user.name %></td>
+            <td><%= ut.finished_at.strftime('%Y年%m月%d日 %H:%M') %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+  <div class="panel panel-default">
+    <div class="panel-heading">未完了のメンバー</div>
+    <table class="table">
+      <tr><th>名前</th></tr>
+      <% if @unfinished_u_tasks.empty? %>
+        <tr><td>未完了メンバーはいません</td></tr>
+      <% end %>
+      <% @unfinished_u_tasks.each do |ut| %>
+        <tr>
+          <td><%= ut.user.name %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">確認したメンバー</div>
+    <table class="table">
+      <tr><th>名前</th></tr>
+      <% if @confirmed_u_tasks.empty? %>
+        <tr><td>確認したメンバーはいません</td></tr>
+      <% end %>
+      <% @confirmed_u_tasks.each do |ut| %>
+        <tr>
+          <td><%= ut.user.name %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</section>
