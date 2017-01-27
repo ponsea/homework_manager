@@ -13,7 +13,7 @@
         <% points = m.points_with(@group); is_yours =  @user.id == m.id %>
         <%= content_tag :tr, class: is_yours ? 'danger' : nil do %>
           <th scope="row">
-            <%= @group.not_admins.count{|v| v.points_with(@group) > points } + 1 %>位
+            <%= @group.not_admins.select{|v| v.points_with(@group) > points }.size + 1 %>位
             <% if is_yours %>
               <span class="label label-danger">あなた</span>
             <% end %>
