@@ -1,3 +1,21 @@
-<section class="container">
-  <h1><%= controller_name %>#<%= action_name %></h1>
+<section id="messages_index" class="container">
+  <%= form_tag({action: :create}, id: 'msg_form') do %>
+    <%= text_area_tag :body, '', class: 'form-control', autofocus: true, id: 'msg_body' %>
+    <%= submit_tag '書き込む', class: 'btn btn-success btn-block' %>
+  <% end %>
+  <% @messages.each do |msg| %>
+    <hr />
+    <% style = msg.user.nil? ? 'default' :
+        (@group.admins.exists?(msg.user) ? 'success' : 'warning') %>
+    <div class="panel panel-<%= style %>">
+      <div class="panel-heading">
+        <%= msg.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+      </div>
+      <pre><%= msg.body %></pre>
+      <div class="panel-footer text-right">
+        <%= msg.user.name rescue '-'%>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @messages %>
 </section>

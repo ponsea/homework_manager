@@ -1,0 +1,13 @@
+#messages_index {
+  form {
+    margin-bottom: 20px;
+    textarea {
+      min-height: 100px;
+    }
+  }
+  pre {
+    padding: 10px;
+    background-color: $base-color;
+    margin: 0;
+  }
+}
