@@ -25,15 +25,16 @@ class TasksController < OnGroupsController
     return render :new unless @task.valid?
 
     Task.transaction do
+      @task.save!
       @group.not_admins.each do |m|
         m.tasks << @task
       end
+      @group.messages.create!(body: "新タスク「#{@task.title}」が生成されました")
     end
     if params[:mail]
       to = @group.members.map {|m| m.email }
       NoticeMailer.task_created(@task, to).deliver
     end
-
     redirect_to action: :index
   end
 

@@ -29,6 +29,7 @@ class GroupsController < OnGroupsController
     Group.transaction do
       @new_group.save! validate: false
       UsersGroup.create!(user: @new_group.author, group: @new_group, admin: true)
+      @new_group.messages.create!(body: "「#{@new_group.name}」が結成されました。")
     end
   end
 
