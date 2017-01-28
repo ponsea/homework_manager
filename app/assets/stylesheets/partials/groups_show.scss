@@ -1,3 +1,7 @@
 #groups_show {
-
+  pre {
+    background-color: $base-color;
+    margin: 0;
+    min-height: 200px;
+  }
 }
