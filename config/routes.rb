@@ -13,11 +13,13 @@ Rails.application.routes.draw do
       post 'join'     # グループ参加処理
     end
     resources :tasks
-    resources :members, only: :index
     resources :grades, only: [:index, :create]
     resources :messages, only: [:index, :new, :create]
+    resources :members, only: :index do
+      collection { patch 'addmin'}  # 管理者を増やす処理
+    end
     resources :users_tasks, only: [:index, :show, :update] do
-      collection { patch 'confirm'}
+      collection { patch 'confirm'} # タスク確認処理
     end
   end
 end

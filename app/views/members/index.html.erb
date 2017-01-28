@@ -1,14 +1,22 @@
-<section class="container">
+<section id="members_index" class="container">
   <div class="panel panel-default">
     <div class="panel-heading">管理者</div>
     <table class="table">
       <tr><td><%= @group.admins.map{|m| m.name }.join(', ') %></td></tr>
     </table>
   </div>
+  <% if notice %>
+    <div class="alert alert-info">
+      <button class="close" data-dismiss="alert">&times;</button>
+      <%= notice %>
+    </div>
+  <% end %>
   <div class="panel panel-default">
     <div class="panel-heading">メンバー</div>
     <table class="table table-striped">
-      <tr><th>順位</th><th>名前</th><th>合計ポイント</th><th>レベル</th></tr>
+      <tr>
+        <th>順位</th><th>名前</th><th>合計ポイント</th><th>レベル</th>
+      </tr>
       <% @group.not_admins.each do |m| %>
         <% points = m.points_with(@group); is_yours =  @user.id == m.id %>
         <%= content_tag :tr, class: is_yours ? 'danger' : nil do %>
@@ -20,9 +28,19 @@
           </th>
           <td><%= m.name %></td>
           <td><%= points %>pt</td>
-          <td><%= m.grade_with(@group).name %></td>
+          <td>
+            <%= m.grade_with(@group).name %>
+            <% if @group.admins.exists?(@user) %>
+              <button type="button" data-id="<%= m.id %>" class="btn btn-danger pull-right addmin_btn">管理者にする</button>
+            <% end %>
+          </td>
         <% end %>
       <% end %>
     </table>
   </div>
+  <% if @group.admins.exists?(@user) %>
+    <%= form_tag({action: :addmin}, method: :patch, id: 'addmin_form') do %>
+      <%= hidden_field_tag :user_id, '', id: 'hidden_addmin' %>
+    <% end %>
+  <% end %>
 </section>
