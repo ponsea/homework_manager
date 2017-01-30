@@ -1,6 +1,14 @@
 <section id="grades_index" class="container">
   <div class="panel panel-default">
-    <div class="panel-heading"><h1>レベル一覧</h1></div>
+    <div class="panel-heading">
+      <% if @user.points_with(@group) >= 1000 %>
+        <!-- 園田君の班のやつ -->
+        <a class="btn btn-success pull-right" href="https://drive.google.com/open?id=0B_onZ_CRF_VGMDdqYi1OU1Y0S2s">
+          報酬を受け取る
+        </a>
+      <% end %>
+      <h1>レベル一覧</h1>
+    </div>
     <table class="table">
       <tr><th>名前</th><th>必要ポイント</th></tr>
       <% your_grade = @user.grade_with(@group).id rescue nil %>
